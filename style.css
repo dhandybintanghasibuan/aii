@@ -1,4 +1,8 @@
-/* Pengaturan Dasar dan Font */
+/* =================================================================== */
+/* =====         STYLE.CSS VERSI FINAL & RESPONSIVE            ===== */
+/* =================================================================== */
+
+/* --- Pengaturan Dasar & Font --- */
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
@@ -13,26 +17,36 @@ h1, h2 {
     font-family: 'Pacifico', cursive;
     color: #e91e63;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    font-size: 2.5em;
+    /* Ukuran font cair: minimal 1.8rem, ideal 5vw, maksimal 2.5rem */
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    line-height: 1.2;
 }
 
-/* Halaman Intro (sedikit modifikasi) */
+.pesan {
+    /* Ukuran font cair untuk teks biasa */
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    line-height: 1.7;
+}
+
+/* --- Halaman Intro --- */
 #intro.screen {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    position: fixed; /* Membuat intro tetap di atas sampai hilang */
+    position: fixed;
     width: 100%;
     z-index: 100;
     background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
     transition: opacity 1s ease-in-out;
 }
+
 #intro.hidden {
     opacity: 0;
     pointer-events: none;
 }
+
 .intro-box {
     background: rgba(255, 255, 255, 0.85);
     padding: 30px 40px;
@@ -40,7 +54,7 @@ h1, h2 {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
-/* Konten Utama */
+/* --- Konten Utama & Animasi Scroll --- */
 main#ucapan {
     padding: 50px 20px;
 }
@@ -54,18 +68,18 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* Animasi saat scroll */
 .reveal {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 1.2s ease-out, transform 1.2s ease-out;
 }
+
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Tombol */
+/* --- Tombol & Elemen Umum --- */
 button {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
@@ -84,9 +98,11 @@ button:hover {
     background-color: #e91e63;
 }
 
-/* Bagian Spesifik */
-.pesan { font-size: 1.1em; line-height: 1.7; }
 #music-player { margin-top: 30px; }
+.penutup { margin-top: 30px; font-style: italic; font-weight: 700; color: #e91e63; font-size: 1.2em; }
+.hidden { opacity: 0; visibility: hidden; height: 0; margin: 0; padding: 0; }
+
+/* --- Gaya untuk Bagian "Alasan Sayang" --- */
 .alasan ul { list-style: none; padding: 0; }
 .alasan li {
     background: #fff0f5;
@@ -96,65 +112,75 @@ button:hover {
     border-left: 5px solid #ff69b4;
     text-align: left;
 }
-.galeri, .timeline-wrapper, .penutup-akhir { margin-top: 20px; }
+
+/* --- Gaya untuk Galeri Foto --- */
 .bingkai-foto, .navigasi-galeri { max-width: 400px; margin-left: auto; margin-right: auto; }
 .bingkai-foto { border: 5px solid white; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 15px; }
 #gambarGaleri { width: 100%; display: block; }
 .navigasi-galeri { display: flex; justify-content: space-between; }
-.penutup { margin-top: 30px; font-style: italic; font-weight: 700; color: #e91e63; font-size: 1.2em; }
 
-/* Desain Timeline */
-.timeline {
-    position: relative;
-    padding: 20px 0;
+
+/* --- Gaya untuk Ide 1: Kotak Harapan --- */
+.harapan-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px; margin-top: 30px; text-align: left;
 }
-.timeline::before { /* Garis vertikal di tengah */
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 4px;
-    height: 100%;
-    background: #fad0c4;
+.harapan-item {
+    background: #fff0f5; padding: 25px; border-radius: 15px;
+    border-bottom: 5px solid #ffb6c1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.timeline-item {
-    padding: 20px 40px;
-    position: relative;
-    width: 50%;
-    box-sizing: border-box;
+.harapan-item:hover { transform: translateY(-10px); box-shadow: 0 15px 25px rgba(255, 105, 180, 0.2); }
+.harapan-item h3 { color: #e91e63; margin-top: 0; }
+
+
+/* --- Gaya untuk Ide 2: Puzzle Foto (Dengan Perbaikan) --- */
+.puzzle-wrapper { display: flex; flex-direction: column; align-items: center; }
+#puzzle-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 400px; height: 400px;
+    margin: 20px auto; border: 3px solid #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    cursor: pointer; position: relative;
+    background-image: url('img/foto_spesial.jpeg'); /* GANTI DENGAN FOTO PUZZLE ANDA */
+    background-size: cover;
 }
-.timeline-item:nth-child(odd) {
-    left: 0;
-    text-align: right;
-    padding-right: 60px;
+.puzzle-piece {
+    background-color: #ff69b4; border: 1px solid #fff;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    z-index: 2;
 }
-.timeline-item:nth-child(even) {
-    left: 50%;
-    text-align: left;
-    padding-left: 60px;
-}
-.timeline-item::after { /* Titik di garis tengah */
-    content: '';
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: white;
-    border: 4px solid #ff69b4;
-    z-index: 1;
-}
-.timeline-item:nth-child(odd)::after {
-    right: -10px;
-}
-.timeline-item:nth-child(even)::after {
-    left: -10px;
-}
+.puzzle-piece:hover { background-color: #e91e63; transform: scale(1.05); }
+#pesan-puzzle { font-style: italic; color: #e91e63; transition: opacity 1s ease 0.5s; }
+
+
+/* --- Gaya untuk Ide 3: Kartu Kenangan --- */
+.memory-card-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; perspective: 1000px; }
+.memory-card { width: 250px; height: 350px; background-color: transparent; cursor: pointer; }
+.card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.8s; transform-style: preserve-3d; box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 15px; }
+.memory-card.is-flipped .card-inner { transform: rotateY(180deg); }
+.card-front, .card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 15px; display: flex; justify-content: center; align-items: center; text-align: center; padding: 20px; box-sizing: border-box; }
+.card-front { background-color: #ff69b4; color: white; }
+.card-back { background-color: #e91e63; color: white; transform: rotateY(180deg); background-size: cover; background-position: center; }
+.card-back p { background-color: rgba(0,0,0,0.3); padding: 5px; border-radius: 5px; }
+
+
+/* --- Gaya untuk Ide 4: Timeline --- */
+.timeline { position: relative; padding: 20px 0; }
+.timeline::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: #fad0c4; }
+.timeline-item { padding: 20px 40px; position: relative; width: 50%; box-sizing: border-box; }
+.timeline-item:nth-child(odd) { left: 0; text-align: right; padding-right: 60px; }
+.timeline-item:nth-child(even) { left: 50%; text-align: left; padding-left: 60px; }
+.timeline-item::after { content: ''; position: absolute; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; border-radius: 50%; background: white; border: 4px solid #ff69b4; z-index: 1; }
+.timeline-item:nth-child(odd)::after { right: -10px; }
+.timeline-item:nth-child(even)::after { left: -10px; }
 .timeline-item h3 { color: #e91e63; }
 
-/* Animasi Hati (tetap sama) */
+
+/* --- Animasi Hati --- */
 .hearts-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
 .heart { position: absolute; width: 20px; height: 20px; background: #ff69b4; transform: rotate(-45deg); animation: fall 10s linear infinite; opacity: 0.8; }
 .heart::before, .heart::after { content: ''; position: absolute; width: 20px; height: 20px; background: #ff69b4; border-radius: 50%; }
@@ -165,96 +191,44 @@ button:hover {
     100% { top: 110%; transform: translateX(100px) rotate(-45deg); opacity: 0; }
 }
 
-/* CSS untuk Ide 2: Puzzle Foto */
-#puzzle-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    width: 400px;
-    height: 400px;
-    margin: 20px auto;
-    border: 3px solid #fff;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    cursor: pointer;
-    /* GANTI NAMA FOTO PUZZLE DI SINI */
-    background-image: url('img/foto1.jpeg'); 
-    background-size: cover;
-}
-.puzzle-piece {
-    background-color: #ff69b4;
-    border: 1px solid #fff;
-    transition: opacity 0.5s ease;
-}
-.puzzle-piece:hover {
-    background-color: #e91e63;
-}
-#pesan-puzzle {
-    transition: opacity 1s ease;
-    font-size: 1.2em;
-    font-style: italic;
-    color: #e91e63;
-}
-.hidden {
-    opacity: 0;
-}
 
 /* =================================================================== */
-/* ===== BAGIAN RESPONSIVE (TAMBAHKAN INI DI AKHIR STYLE.CSS) ===== */
+/* =====         BAGIAN KHUSUS RESPONSIVE LAYOUT         ===== */
 /* =================================================================== */
 
-/* --- Untuk Tampilan Tablet (Lebar maksimal 992px) --- */
-@media (max-width: 992px) {
-    h1, h2 {
-        font-size: 2.2em; /* Sedikit perkecil ukuran judul */
-    }
-
+/* --- Untuk Tampilan Tablet & Mobile (Lebar maksimal 768px) --- */
+@media (max-width: 768px) {
     section {
         margin: 60px auto;
         padding: 30px;
     }
-}
 
-
-/* --- Untuk Tampilan Tablet & Mobile (Lebar maksimal 768px) --- */
-@media (max-width: 768px) {
     /* Perbaiki Timeline agar tidak berantakan */
-    .timeline::before {
-        /* Pindahkan garis timeline ke sisi kiri */
-        left: 20px;
-    }
-    
+    .timeline::before { left: 20px; }
     .timeline-item {
-        /* Buat semua item timeline memakan seluruh lebar dan rata kiri */
         width: 100%;
-        left: 0 !important; /* Paksa posisi ke kiri */
-        text-align: left !important; /* Paksa teks rata kiri */
+        left: 0 !important;
+        text-align: left !important;
         padding-left: 60px;
         padding-right: 20px;
     }
-    
     .timeline-item:nth-child(odd)::after,
     .timeline-item:nth-child(even)::after {
-        /* Pindahkan titik timeline ke garis di sisi kiri */
         left: 10px;
     }
 
-    /* Perbaiki layout kartu (Ide 3) */
+    /* Perbaiki layout kartu (Ide 3) agar tersusun ke bawah */
     .memory-card-container {
         flex-direction: column;
         align-items: center;
     }
 }
 
-
 /* --- Untuk Tampilan Mobile (Lebar maksimal 576px) --- */
 @media (max-width: 576px) {
-    h1, h2 {
-        font-size: 1.8em; /* Perkecil lagi ukuran judul untuk HP */
-    }
-
     section {
         margin: 40px auto;
-        padding: 20px; /* Kurangi padding agar tidak terlalu makan tempat */
+        padding: 20px;
     }
 
     .intro-box {
@@ -262,14 +236,8 @@ button:hover {
         width: 90%;
     }
 
-    /* Perbaiki layout Kotak Harapan (Ide 1) */
-    .harapan-container {
-        grid-template-columns: 1fr; /* Buat kotak harapan tersusun ke bawah */
-    }
-
     /* Perbaiki layout Puzzle (Ide 2) */
     #puzzle-container {
-        /* Buat ukuran puzzle fleksibel sesuai lebar layar */
         width: 90vw;
         height: 90vw;
         max-width: 320px;

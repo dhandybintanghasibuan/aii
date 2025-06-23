@@ -197,3 +197,88 @@ button:hover {
 .hidden {
     opacity: 0;
 }
+
+/* =================================================================== */
+/* ===== BAGIAN RESPONSIVE (TAMBAHKAN INI DI AKHIR STYLE.CSS) ===== */
+/* =================================================================== */
+
+/* --- Untuk Tampilan Tablet (Lebar maksimal 992px) --- */
+@media (max-width: 992px) {
+    h1, h2 {
+        font-size: 2.2em; /* Sedikit perkecil ukuran judul */
+    }
+
+    section {
+        margin: 60px auto;
+        padding: 30px;
+    }
+}
+
+
+/* --- Untuk Tampilan Tablet & Mobile (Lebar maksimal 768px) --- */
+@media (max-width: 768px) {
+    /* Perbaiki Timeline agar tidak berantakan */
+    .timeline::before {
+        /* Pindahkan garis timeline ke sisi kiri */
+        left: 20px;
+    }
+    
+    .timeline-item {
+        /* Buat semua item timeline memakan seluruh lebar dan rata kiri */
+        width: 100%;
+        left: 0 !important; /* Paksa posisi ke kiri */
+        text-align: left !important; /* Paksa teks rata kiri */
+        padding-left: 60px;
+        padding-right: 20px;
+    }
+    
+    .timeline-item:nth-child(odd)::after,
+    .timeline-item:nth-child(even)::after {
+        /* Pindahkan titik timeline ke garis di sisi kiri */
+        left: 10px;
+    }
+
+    /* Perbaiki layout kartu (Ide 3) */
+    .memory-card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+/* --- Untuk Tampilan Mobile (Lebar maksimal 576px) --- */
+@media (max-width: 576px) {
+    h1, h2 {
+        font-size: 1.8em; /* Perkecil lagi ukuran judul untuk HP */
+    }
+
+    section {
+        margin: 40px auto;
+        padding: 20px; /* Kurangi padding agar tidak terlalu makan tempat */
+    }
+
+    .intro-box {
+        padding: 20px;
+        width: 90%;
+    }
+
+    /* Perbaiki layout Kotak Harapan (Ide 1) */
+    .harapan-container {
+        grid-template-columns: 1fr; /* Buat kotak harapan tersusun ke bawah */
+    }
+
+    /* Perbaiki layout Puzzle (Ide 2) */
+    #puzzle-container {
+        /* Buat ukuran puzzle fleksibel sesuai lebar layar */
+        width: 90vw;
+        height: 90vw;
+        max-width: 320px;
+        max-height: 320px;
+    }
+    
+    /* Perbaiki Galeri Foto */
+    .navigasi-galeri {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

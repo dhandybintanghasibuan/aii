@@ -116,26 +116,3 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   setInterval(createHeart, 500);
 });
-
-// Logika untuk Ide 2: Puzzle Foto
-const puzzleContainer = document.getElementById('puzzle-container');
-const pesanPuzzle = document.getElementById('pesan-puzzle');
-if (puzzleContainer) {
-    for (let i = 0; i < 16; i++) {
-        const piece = document.createElement('div');
-        piece.classList.add('puzzle-piece');
-        piece.addEventListener('click', () => {
-            piece.style.opacity = '0';
-            checkPuzzleCompletion();
-        });
-        puzzleContainer.appendChild(piece);
-    }
-}
-
-function checkPuzzleCompletion() {
-    const pieces = document.querySelectorAll('.puzzle-piece');
-    const hiddenPieces = Array.from(pieces).filter(p => p.style.opacity === '0').length;
-    if (hiddenPieces === pieces.length) {
-        pesanPuzzle.classList.remove('hidden');
-    }
-}

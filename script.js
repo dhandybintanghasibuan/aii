@@ -117,11 +117,3 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   setInterval(createHeart, 500);
 });
-
-function checkPuzzleCompletion() {
-    const pieces = document.querySelectorAll('.puzzle-piece');
-    const hiddenPieces = Array.from(pieces).filter(p => p.style.opacity === '0').length;
-    if (hiddenPieces === pieces.length) {
-        pesanPuzzle.classList.remove('hidden');
-    }
-}

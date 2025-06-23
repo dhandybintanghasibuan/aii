@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // ----- PENGATURAN AWAL -----
   const daftarGambar = [
+    "foto1.jpeg",
     "foto2.jpeg",
     "foto3.jpeg",
     "foto4.jpeg",
@@ -116,21 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   setInterval(createHeart, 500);
 });
-
-// Logika untuk Ide 2: Puzzle Foto
-const puzzleContainer = document.getElementById('puzzle-container');
-const pesanPuzzle = document.getElementById('pesan-puzzle');
-if (puzzleContainer) {
-    for (let i = 0; i < 16; i++) {
-        const piece = document.createElement('div');
-        piece.classList.add('puzzle-piece');
-        piece.addEventListener('click', () => {
-            piece.style.opacity = '0';
-            checkPuzzleCompletion();
-        });
-        puzzleContainer.appendChild(piece);
-    }
-}
 
 function checkPuzzleCompletion() {
     const pieces = document.querySelectorAll('.puzzle-piece');

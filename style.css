@@ -235,14 +235,6 @@ button:hover {
         padding: 20px;
         width: 90%;
     }
-
-    /* Perbaiki layout Puzzle (Ide 2) */
-    #puzzle-container {
-        width: 90vw;
-        height: 90vw;
-        max-width: 320px;
-        max-height: 320px;
-    }
     
     /* Perbaiki Galeri Foto */
     .navigasi-galeri {

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Sayangku, Aidatul Fauziah !</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="hearts-container"></div>
+
+    <div id="intro" class="screen">
+        <div class="intro-box">
+            <h1>Hai Sayang!</h1>
+            <p>Abin punya sesuatu yang spesial untuk aii di hari ulang tahun aii.</p>
+            <button id="bukaUndangan">Klik Di Sini!</button>
+        </div>
+    </div>
+
+    <main id="ucapan" style="display:none;">
+        <section class="ucapan-awal reveal">
+            <h1>Happy Birthday, Sayang!!! ❤️</h1>
+            <p class="pesan">
+                Selamat ulang tahun ya, sayangku. Semoga di usia aii yang ini selalu diberi kesehatan, kebahagiaan, dan semua cita-cita aii tercapai. Terima kasih sudah menjadi bagian terindah dalam hidup abin. Abin sayang sama Aii!
+            </p>
+            <div id="music-player">
+                <button id="playMusicBtn">Play Music</button>
+            </div>
+        </section>
+
+        <section class="alasan reveal">
+            <h2>Beberapa Alasan Abin Sayang Aii</h2>
+            <ul>
+                <li>Karena senyum aii menenangkan.</li>
+                <li>Karena aii selalu ada buat abin.</li>
+                <li>Karena aii orang yang paling sabar.</li>
+                <li>Karena bersama aii, abin jadi bahagia.</li>
+                </ul>
+        </section>
+
+        <section class="galeri-wrapper reveal">
+            <div class="galeri">
+                <h2>Beberapa Kenangan Manis Kita</h2>
+                <div class="bingkai-foto">
+                    <img id="gambarGaleri" src="img/foto2.jpeg" alt="Kenangan kita">
+                </div>
+                <div class="navigasi-galeri">
+                    <button id="tombolSebelumnya">&laquo; Sebelumnya</button>
+                    <button id="tombolBerikutnya">Berikutnya &raquo;</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="puzzle-wrapper reveal">
+            <h2>Satu Momen Paling Spesial...</h2>
+            <p>Klik kotak-kotak di bawah ini untuk mengungkap kenangan favorit abin!</p>
+            <div id="puzzle-container">
+                </div>
+            <p id="pesan-puzzle" class="hidden">Momen ini, saat abin sadar betapa beruntungnya punya aii.</p>
+        </section>
+
+        <section class="penutup-akhir reveal">
+            <h2>Sekali Lagi...</h2>
+            <p class="pesan">Selamat ulang tahun ya, Aidatul Fauziah. Abin harap aii suka kejutan kecil ini.</p>
+            <p class="penutup">Dari orang yang selalu menyayangimu, <br>Abin</p>
+        </section>
+    </main>
+
+    <audio id="backgroundMusic" loop>
+        <source src="lagu-spesial.mp3" type="audio/mpeg">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <script src="script.js"></script>
+</body> 
+</html>
